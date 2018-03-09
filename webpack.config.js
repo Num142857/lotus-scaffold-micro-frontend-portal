@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const projectConfig = require('./src/project.json')
 
 module.exports = {
 	entry: {
@@ -10,8 +11,8 @@ module.exports = {
 	},
 	output: {
 		publicPath: '',
-		filename: '[name].js',
-		path: path.resolve(__dirname, 'release'),
+		filename: 'portal.js',
+		path: path.resolve(__dirname, 'dist'),
 	},
 	module: {
 		rules: [
@@ -19,6 +20,9 @@ module.exports = {
 				test: /\.js?$/,
 				exclude: [path.resolve(__dirname, 'node_modules')],
 				loader: 'babel-loader',
+				options: {
+					presets: ['stage-3','es2015']
+				}
 			}
 		],
 	},
@@ -36,13 +40,13 @@ module.exports = {
             {from: path.resolve(__dirname, 'src/index.html')},
             {from: path.resolve(__dirname, 'libs/system.js')},
         ]),
-		new CleanWebpackPlugin(['release'])
+		new CleanWebpackPlugin(['dist'])
 	],
 	devtool: 'source-map',
 	externals: [
 	],
     devServer: {
-		contentBase: './release',
+		contentBase: './dist',
         historyApiFallback: true,
         watchOptions: { aggregateTimeout: 300, poll: 1000 },
         headers: {
@@ -50,19 +54,17 @@ module.exports = {
             "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
             "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
         },
-        proxy: {
-            "/app1": {
-                target: "http://localhost:9001",
-                pathRewrite: {"^/app1" : ""}
-            },
-            "/app2": {
-                target: "http://localhost:9002",
-                pathRewrite: {"^/app2" : ""}
-            },
-            "/app3": {
-                target: "http://localhost:9003",
-                pathRewrite: {"^/app3" : ""}
-            }
-        }
+		proxy: (function proxy() {
+			let proxy = {}
+			projectConfig.projects.forEach(element => {
+				for (const key in element.proxy) {
+					const object = element.proxy;
+					if (object.hasOwnProperty(key)) {
+						proxy[key] = object[key]
+					}
+				}
+			});
+			return proxy
+		})()
     },
 };
