@@ -7,11 +7,12 @@ const projectConfig = require('./src/project.js')
 
 module.exports = {
 	entry: {
-		main: 'src/Portal.js',
+		main: 'src/Bootstrap.js',
 	},
 	output: {
 		publicPath: '',
-		filename: 'portal.js',
+		// filename: 'Bootstrap.[hash:5].js',
+		filename: 'Bootstrap.js',
 		path: path.resolve(__dirname, 'dist'),
 	},
 	module: {
