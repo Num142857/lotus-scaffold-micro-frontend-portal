@@ -2,20 +2,9 @@
     "projects": [{
         "name": "app1",
         "url-prefix": "/jcer",
-        "main": "/app1/main.js",
+        "main": "/jcer/main.js",
         "proxy": {
-            "/app1": {
-                "target": "http://localhost:8000",
-                "pathRewrite": {
-                    "^/app1": "/static"
-                }
-            },
-            "/jcerStatic": {
-                "target": "http://localhost:8000",
-                "pathRewrite": {
-                    "^/jcerStatic": "/static/jcerStatic"
-                }
-            }
+
         }
     }]
 }
