@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const projectConfig = require('./src/project.json')
+const projectConfig = require('./src/project.js')
 
 module.exports = {
 	entry: {
@@ -38,6 +38,7 @@ module.exports = {
 	plugins: [
         CopyWebpackPlugin([
             {from: path.resolve(__dirname, 'src/index.html')},
+			{ from: path.resolve(__dirname, 'src/project.js')},
             {from: path.resolve(__dirname, 'libs/system.js')},
         ]),
 		new CleanWebpackPlugin(['dist'])

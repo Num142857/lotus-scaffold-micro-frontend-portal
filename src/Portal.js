@@ -1,7 +1,10 @@
 "use strict";
 import * as singleSpa from 'single-spa'; 
 import { registerApp } from './Register'
-import projectConfig from './project.json'
+import projectConfig from './project.js'
+SystemJS.import('./project.js').then(function (m) {
+    console.log(m)
+})
 
 async function bootstrap() {
     projectConfig.projects.forEach( async element => {
