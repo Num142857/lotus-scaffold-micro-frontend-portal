@@ -8,7 +8,7 @@ async function bootstrap() {
         await registerApp({
             name: element.name,
             main: element.main,
-            url: element['url-prefix'],
+            url: element['prefix'],
         });
     });
 
