@@ -13,7 +13,7 @@ module.exports = {
 		publicPath: '',
 		// filename: 'Bootstrap.[hash:5].js',
 		filename: 'Bootstrap.js',
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, 'build'),
 	},
 	module: {
 		rules: [
@@ -42,13 +42,13 @@ module.exports = {
 			{ from: path.resolve(__dirname, 'src/project.js')},
             {from: path.resolve(__dirname, 'libs/system.js')},
         ]),
-		new CleanWebpackPlugin(['dist'])
+		new CleanWebpackPlugin(['build'])
 	],
 	devtool: 'source-map',
 	externals: [
 	],
     devServer: {
-		contentBase: './dist',
+		contentBase: './build',
         historyApiFallback: true,
         watchOptions: { aggregateTimeout: 300, poll: 1000 },
         headers: {
