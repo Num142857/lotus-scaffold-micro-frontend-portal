@@ -65,7 +65,7 @@ module.exports = {
 						proxy[key] = object[key]
 					}
 				}
-			});
+			}); 
 			return proxy
 		})()
     },
