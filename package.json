@@ -4,7 +4,7 @@
   "description": "Portal app that builds the foundation of multiple SPAs",
   "scripts": {
     "watch": "webpack-dev-server --port 9000",
-    "build": "webpack -p --progress"
+    "build:micro": "webpack -p --progress"
   },
   "license": "MIT",
   "devDependencies": {
