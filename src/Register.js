@@ -1,5 +1,5 @@
 import * as singleSpa from 'single-spa';
-import { GlobalEventDistributor } from './globalEventDistributor'
+import { GlobalEventDistributor } from './GlobalEventDistributor' 
 export function hashPrefix(prefix) {
     
     console.log("当前访问的地址为:", prefix)
