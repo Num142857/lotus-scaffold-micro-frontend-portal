@@ -9,6 +9,7 @@ async function bootstrap() {
             name: element.name,
             main: element.main,
             url: element['prefix'],
+            store:element.store
         });
     });
 
