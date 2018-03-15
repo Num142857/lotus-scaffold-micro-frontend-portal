@@ -21,7 +21,7 @@ export async function registerApp(params) {
     // import the store module
     const storeModule = params.store ? await SystemJS.import(params.store) : { storeInstance: null };
     // register the store with the globalEventDistributor
-    if (sparams.store && globalEventDistributor){
+    if (params.store && globalEventDistributor){
         globalEventDistributor.registerStore(storeModule);
     }
     // register the app with singleSPA and pass a reference to the store of the app as well as a reference to the globalEventDistributor
