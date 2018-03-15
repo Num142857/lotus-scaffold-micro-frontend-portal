@@ -39,7 +39,7 @@ module.exports = {
 	plugins: [
         CopyWebpackPlugin([
             {from: path.resolve(__dirname, 'src/index.html')},
-			{ from: path.resolve(__dirname, 'src/project.js')},
+			// { from: path.resolve(__dirname, 'src/project.js')},
             {from: path.resolve(__dirname, 'libs/system.js')},
         ]),
 		new CleanWebpackPlugin(['build'])
