@@ -25,7 +25,7 @@ export async function registerApp(params) {
         globalEventDistributor.registerStore(storeModule.storeInstance);
     }
     // register the app with singleSPA and pass a reference to the store of the app as well as a reference to the globalEventDistributor
-    const customProps = { store: storeModule.storeInstance, globalEventDistributor: globalEventDistributor };
+    const customProps = { store: storeModule, globalEventDistributor: globalEventDistributor };
     setInterval(function(){
         console.log(params ,storeModule)
     },2000)
