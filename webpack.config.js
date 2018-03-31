@@ -14,7 +14,7 @@ module.exports = {
 		// filename: 'Bootstrap.[hash:5].js',
 		filename: 'Bootstrap.js',
 		path: path.resolve(__dirname, 'build'),
-	},
+	}, 
 	module: {
 		rules: [
 			{
