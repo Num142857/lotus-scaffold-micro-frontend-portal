@@ -1,0 +1,11 @@
+node_modules/
+project/
+view/
+bower_components/
+jspm_packages/
+.DS_Store
+npm-debug.log
+*.bundle.js
+*.bundle.js.map
+build/
+.idea
