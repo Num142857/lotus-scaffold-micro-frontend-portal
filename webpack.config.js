@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const projectConfig = require('./src/project.js')
-
+   
 module.exports = {
 	entry: {
 		main: 'src/Bootstrap.js',
@@ -14,7 +14,7 @@ module.exports = {
 		// filename: 'Bootstrap.[hash:5].js',
 		filename: 'Bootstrap.js',
 		path: path.resolve(__dirname, 'build'),
-	},
+	},  
 	module: {
 		rules: [
 			{
