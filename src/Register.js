@@ -1,4 +1,5 @@
 import * as singleSpa from 'single-spa';
+import _ from 'lodash'
 import { GlobalEventDistributor } from './GlobalEventDistributor' 
 export function hashPrefix(prefix) {
     
@@ -22,12 +23,9 @@ export async function registerApp(params) {
     const storeModule = params.store ? await SystemJS.import(params.store) : { storeInstance: null };
     // register the store with the globalEventDistributor
     if (params.store && globalEventDistributor){
-        globalEventDistributor.registerStore(storeModule); 
+        globalEventDistributor.registerStore(_.cloneDeep(storeModule)); 
     }
     // register the app with singleSPA and pass a reference to the store of the app as well as a reference to the globalEventDistributor
     const customProps = { store: storeModule, globalEventDistributor: globalEventDistributor };
-    setInterval(function(){
-        console.log(params ,storeModule)
-    },2000)
     singleSpa.registerApplication(params.name, () => SystemJS.import(params.main), pathPrefix(params.url), customProps);
 }

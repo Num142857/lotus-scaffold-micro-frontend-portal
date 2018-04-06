@@ -22,6 +22,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "copy-webpack-plugin": "^4.3.0",
+    "lodash": "^4.17.5",
     "single-spa": "^3.8.1",
     "systemjs": "^0.20.19"
   }
