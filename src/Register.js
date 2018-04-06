@@ -20,10 +20,12 @@ export function pathPrefix(prefix) {
 }
 export async function registerApp(params) {
     // import the store module
-    const storeModule = params.store ? await SystemJS.import(params.store) : { storeInstance: null };
+    let storeModule = params.store ? await SystemJS.import(params.store) : { storeInstance: null };
+    storeModule=  _.cloneDeep(storeModule)
+    delete storeModule.__esModule
     // register the store with the globalEventDistributor
     if (params.store && globalEventDistributor){
-        globalEventDistributor.registerStore(_.cloneDeep(storeModule)); 
+        globalEventDistributor.registerStore(storeModule); 
     }
     // register the app with singleSPA and pass a reference to the store of the app as well as a reference to the globalEventDistributor
     const customProps = { store: storeModule, globalEventDistributor: globalEventDistributor };
