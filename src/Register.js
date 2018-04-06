@@ -22,7 +22,7 @@ export async function registerApp(params) {
     // import the store module
     let storeModule = params.store ? await SystemJS.import(params.store) : { storeInstance: null };
     // storeModule=  _.cloneDeep(storeModule)
-    delete storeModule.__esModule
+    // delete storeModule.__esModule
     // register the store with the globalEventDistributor
     if (params.store && globalEventDistributor){
         globalEventDistributor.registerStore(storeModule); 
