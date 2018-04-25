@@ -9,7 +9,10 @@ export class GlobalEventDistributor {
     }
 
     dispatch(event) {
-        this.stores.forEach((s) => s.dispatch(event));
+        this.stores.forEach((s) => {
+            s.dispatch(event)
+            s.dispatch('REFRESH')
+        });
     }
     getState(event) {
         let state = [];
