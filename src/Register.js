@@ -21,12 +21,16 @@ export function pathPrefix(prefix) {
 export async function registerApp(params) {
     // import the store module
     let storeModule = params.store ? await SystemJS.import(params.store) : { storeInstance: null };
-    storeModule=  _.cloneDeep(storeModule)
-    delete storeModule.__esModule
+
     // register the store with the globalEventDistributor
-    if (params.store && globalEventDistributor){
-        globalEventDistributor.registerStore(storeModule); 
+    if (storeModule.storeInstance && globalEventDistributor) {
+        // add a reference of the store to the customProps
+        customProps.store = storeModule.storeInstance;
+
+        // register the store with the globalEventDistributor
+        globalEventDistributor.registerStore(storeModule.storeInstance);
     }
+
     setInterval(function(){
         console.log(globalEventDistributor)
     },4000)
