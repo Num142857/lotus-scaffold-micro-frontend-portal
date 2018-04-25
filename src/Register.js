@@ -24,7 +24,7 @@ export async function registerApp(params) {
 
     // try to import the store module
     try {
-        storeModule = storeURL ? await SystemJS.import(storeURL) : { storeInstance: null };
+        storeModule = params.store ? await SystemJS.import(params.store) : { storeInstance: null };
     } catch (e) {
         console.log(`Could not load store of app ${name}.`, e);
     }
