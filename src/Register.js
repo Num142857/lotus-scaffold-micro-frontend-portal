@@ -20,7 +20,14 @@ export function pathPrefix(prefix) {
 }
 export async function registerApp(params) {
     // import the store module
-    let storeModule = params.store ? await SystemJS.import(params.store) : { storeInstance: null };
+    let storeModule = {}, customProps = { globalEventDistributor: globalEventDistributor };
+
+    // try to import the store module
+    try {
+        storeModule = storeURL ? await SystemJS.import(storeURL) : { storeInstance: null };
+    } catch (e) {
+        console.log(`Could not load store of app ${name}.`, e);
+    }
 
     // register the store with the globalEventDistributor
     if (storeModule.storeInstance && globalEventDistributor) {
