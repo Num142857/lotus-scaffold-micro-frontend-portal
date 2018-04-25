@@ -12,13 +12,14 @@ export class GlobalEventDistributor {
         this.stores.forEach((s) => {
             console.log(event)
             s.dispatch(event)
-            s.dispatch({type:'REFRESH'})
+            setTimeout(()=>s.dispatch({type:'REFRESH'}))
+            
         });
     }
-    getState(event) {
+    getState() {
         let state = {};
         this.stores.forEach((s) => {
-            let currentState = s.getState(event);
+            let currentState = s.getState();
             console.log(currentState)
             state[currentState.namespace] = currentState
         });
