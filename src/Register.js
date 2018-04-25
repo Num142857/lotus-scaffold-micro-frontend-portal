@@ -26,7 +26,7 @@ export async function registerApp(params) {
     try {
         storeModule = params.store ? await SystemJS.import(params.store) : { storeInstance: null };
     } catch (e) {
-        console.log(`Could not load store of app ${name}.`, e);
+        console.log(`Could not load store of app ${params.name}.`, e);
     }
     console.log(storeModule)
     // register the store with the globalEventDistributor
@@ -38,9 +38,6 @@ export async function registerApp(params) {
         globalEventDistributor.registerStore(storeModule.storeInstance);
     }
 
-    setInterval(function(){
-        console.log(globalEventDistributor)
-    },4000)
     // register the app with singleSPA and pass a reference to the store of the app as well as a reference to the globalEventDistributor
     customProps = { store: storeModule, globalEventDistributor: globalEventDistributor };
     singleSpa.registerApplication(params.name, () => SystemJS.import(params.main), pathPrefix(params.url), customProps);
