@@ -28,7 +28,7 @@ export async function registerApp(params) {
     } catch (e) {
         console.log(`Could not load store of app ${name}.`, e);
     }
-    console.log(storeModule.storeInstance)
+    console.log(storeModule)
     // register the store with the globalEventDistributor
     if (storeModule.storeInstance && globalEventDistributor) {
         // add a reference of the store to the customProps
