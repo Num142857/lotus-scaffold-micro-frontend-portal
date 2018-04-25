@@ -10,6 +10,7 @@ export class GlobalEventDistributor {
 
     dispatch(event) {
         this.stores.forEach((s) => {
+            console.log(event)
             s.dispatch(event)
             s.dispatch('REFRESH')
         });
