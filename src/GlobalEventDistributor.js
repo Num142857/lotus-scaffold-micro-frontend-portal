@@ -15,9 +15,10 @@ export class GlobalEventDistributor {
         });
     }
     getState(event) {
-        let state = [];
+        let state = {};
         this.stores.forEach((s) => {
-            state.push(s.getState(event)) 
+            let currentState = s.getState(event);
+            state[currentState.namespace] = currentState
         });
         return state
     }
