@@ -19,6 +19,7 @@ export class GlobalEventDistributor {
         let state = {};
         this.stores.forEach((s) => {
             let currentState = s.getState(event);
+            console.log(currentState)
             state[currentState.namespace] = currentState
         });
         return state
