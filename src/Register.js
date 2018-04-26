@@ -11,7 +11,6 @@ export function hashPrefix(prefix) {
 
 const globalEventDistributor = new GlobalEventDistributor();
 export function pathPrefix(prefix) {
-    console.log(prefix)
     return function (location) {
         console.log(location.pathname)
         console.log(location.pathname.indexOf(`${prefix}`) === 0)
@@ -28,7 +27,6 @@ export async function registerApp(params) {
     } catch (e) {
         console.log(`Could not load store of app ${params.name}.`, e);
     }
-    console.log(storeModule)
     // register the store with the globalEventDistributor
     if (storeModule.storeInstance && globalEventDistributor) {
         // add a reference of the store to the customProps
