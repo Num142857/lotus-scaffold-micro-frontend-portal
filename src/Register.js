@@ -27,16 +27,16 @@ export async function registerApp(params) {
     } catch (e) {
         console.log(`Could not load store of app ${params.name}.`, e);
     }
-    // register the store with the globalEventDistributor
+    // 注册应用于事件派发器
     if (storeModule.storeInstance && globalEventDistributor) {
-        // add a reference of the store to the customProps
+        //取出 redux storeInstance
         customProps.store = storeModule.storeInstance;
 
-        // register the store with the globalEventDistributor
+        // 注册到全局
         globalEventDistributor.registerStore(storeModule.storeInstance);
     }
 
-    // register the app with singleSPA and pass a reference to the store of the app as well as a reference to the globalEventDistributor
+    //准备自定义的props,传入每一个单独工程项目
     customProps = { store: storeModule, globalEventDistributor: globalEventDistributor };
     singleSpa.registerApplication(params.name, () => SystemJS.import(params.main), pathPrefix(params.url), customProps);
 }
