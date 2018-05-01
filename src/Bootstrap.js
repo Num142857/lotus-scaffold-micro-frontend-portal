@@ -10,7 +10,8 @@ async function bootstrap() {
             main: element.main,
             url: element['prefix'],
             store:element.store,
-            base: element.base
+            base: element.base,
+            path: element.path
         });
     });
 

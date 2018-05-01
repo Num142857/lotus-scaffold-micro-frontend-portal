@@ -1,20 +1,21 @@
 import * as singleSpa from 'single-spa';
 import _ from 'lodash'
 import { GlobalEventDistributor } from './GlobalEventDistributor' 
-export function hashPrefix(prefix) {
-    
-    console.log("当前访问的地址为:", prefix)
+const globalEventDistributor = new GlobalEventDistributor();
+
+
+export function hashPrefix(app) {
+    console.log("当前访问的地址为:", app.path || app.url)
     return function (location) {
-        return location.hash.startsWith(`${prefix}`);
+        return location.hash.startsWith(`${app.path || app.url}`);
     }
 }
 
-const globalEventDistributor = new GlobalEventDistributor();
-export function pathPrefix(prefix) {
+export function pathPrefix(app) {
     return function (location) {
         console.log(location.pathname)
-        console.log(location.pathname.indexOf(`${prefix}`) === 0)
-        return location.pathname.indexOf(`${prefix}`) === 0;
+        console.log(location.pathname.indexOf(`${app.path||app.url}`) === 0)
+        return location.pathname.indexOf(`${app.path || app.url}`) === 0;
     }
 }
 export async function registerApp(params) {
@@ -38,5 +39,5 @@ export async function registerApp(params) {
 
     //准备自定义的props,传入每一个单独工程项目
     customProps = { store: storeModule, globalEventDistributor: globalEventDistributor };
-    singleSpa.registerApplication(params.name, () => SystemJS.import(params.main), params.base ? (() => true):pathPrefix(params.url), customProps);
+    singleSpa.registerApplication(params.name, () => SystemJS.import(params.main), params.base ? (() => true):pathPrefix(params), customProps);
 }
