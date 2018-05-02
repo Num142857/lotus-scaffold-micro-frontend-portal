@@ -7,7 +7,7 @@ const globalEventDistributor = new GlobalEventDistributor();
 export function hashPrefix(app) {
     console.log("当前访问的地址为:", app.path || app.url)
     return function (location) {
-        return location.hash.startsWith(`${app.path || app.url}`);
+        return location.hash.startsWith(`#${app.path || app.url}`);
     }
 }
 
