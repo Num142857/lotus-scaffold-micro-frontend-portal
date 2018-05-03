@@ -40,5 +40,5 @@ export async function registerApp(params) {
 
     //准备自定义的props,传入每一个单独工程项目
     customProps = { store: storeModule, globalEventDistributor: globalEventDistributor };
-    singleSpa.registerApplication(params.name, () => SystemJS.import(params.main), params.base ? (() => true) : hashPrefix(params), customProps);
+    singleSpa.registerApplication(params.name, () => SystemJS.import(params.main), params.base ? (() => true) : pathPrefix(params), customProps);
 }
