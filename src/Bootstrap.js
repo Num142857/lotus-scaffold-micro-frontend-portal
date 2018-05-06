@@ -8,7 +8,7 @@ async function bootstrap() {
         await registerApp({
             name: element.name,
             main: element.main,
-            url: element['prefix'],
+            url: element.prefix,
             store:element.store,
             base: element.base,
             path: element.path
