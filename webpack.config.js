@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const projectConfig = require('./src/project.js')
    
 module.exports = {
 	entry: {
@@ -44,27 +43,5 @@ module.exports = {
 	],
 	devtool: 'source-map',
 	externals: [
-	],
-    devServer: {
-		contentBase: './build',
-        historyApiFallback: true,
-        watchOptions: { aggregateTimeout: 300, poll: 1000 },
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-        },
-		proxy: (function proxy() {
-			let proxy = {}
-			projectConfig.projects.forEach(element => {
-				for (const key in element.proxy) {
-					const object = element.proxy;
-					if (object.hasOwnProperty(key)) {
-						proxy[key] = object[key]
-					}
-				}
-			}); 
-			return proxy
-		})()
-    },
+	]
 };
