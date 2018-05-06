@@ -1,3 +1,5 @@
+import '../libs/system'
+import '../libs/es6-promise.auto.min'
 import * as singleSpa from 'single-spa';
 import { GlobalEventDistributor } from './GlobalEventDistributor' 
 const globalEventDistributor = new GlobalEventDistributor();
