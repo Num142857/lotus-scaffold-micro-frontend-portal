@@ -39,9 +39,6 @@ module.exports = {
 	plugins: [
         CopyWebpackPlugin([
             {from: path.resolve(__dirname, 'src/index.html')},
-			// { from: path.resolve(__dirname, 'src/project.js')},
-            {from: path.resolve(__dirname, 'libs/system.js')},
-			{ from: path.resolve(__dirname, 'libs/es6-promise.auto.min.js')},
         ]),
 		new CleanWebpackPlugin(['build'])
 	],
