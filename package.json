@@ -1,5 +1,5 @@
 {
-  "name": "single-spa-portal-example-frame",
+  "name": "single-spa-portal",
   "version": "1.0.0",
   "description": "Portal app that builds the foundation of multiple SPAs",
   "scripts": {
