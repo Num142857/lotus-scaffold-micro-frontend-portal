@@ -30,10 +30,11 @@ export function pathPrefix(app) {
     return function (location) {
         let isShow = false
         //如果该应用 有多个需要匹配的路劲
-        console.log(path, location.pathname.indexOf(`${path}`))
+       
         console.log('path是数组', isArray(app.path))
         if(isArray(app.path)){
             app.path.forEach(path => {
+                console.log(path, location.pathname.indexOf(`${path}`))
                 console.log('匹配到了',location.pathname.indexOf(`${path}`) === 0)
                 if(location.pathname.indexOf(`${path}`) === 0){
                     isShow = true
