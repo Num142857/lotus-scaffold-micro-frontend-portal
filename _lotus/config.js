@@ -1,11 +1,10 @@
 module.exports={
     "files":[
         "libs/",
-        "scripts/",
         "src/",
-        "package.json",
         ".babelrc",
         "webpack.config.js",
+        "package.json",
         "README.md"
     ]
 }

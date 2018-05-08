@@ -1,6 +1,6 @@
 {
   "name": "lotus-scaffold-micro-frontend-portal",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "Portal app that builds the foundation of multiple SPAs",
   "scripts": {
     "watch": "webpack-dev-server --port 9000",
