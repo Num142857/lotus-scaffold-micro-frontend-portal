@@ -1,6 +1,6 @@
 {
-  "name": "single-spa-portal",
-  "version": "1.0.0",
+  "name": "lotus-scaffold-micro-frontend-portal",
+  "version": "0.0.2",
   "description": "Portal app that builds the foundation of multiple SPAs",
   "scripts": {
     "watch": "webpack-dev-server --port 9000",
@@ -19,11 +19,21 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "clean-webpack-plugin": "^0.1.18",
+    "commander": "^2.15.1",
+    "consolidate": "^0.15.1",
     "copy-webpack-plugin": "^4.3.0",
+    "fs-extra": "^6.0.0",
+    "inquirer": "^5.2.0",
+    "lotusjs-util": "^1.0.7",
+    "metalsmith": "^2.3.0",
     "single-spa": "^3.8.1",
     "systemjs": "^0.20.19",
     "webpack": "^3.4.1",
     "webpack-cli": "^2.0.13",
     "webpack-dev-server": "^2.11.1"
-  }
+  },
+  "bin": {
+    "lotus-scaffold-micro-frontend-portal": "_lotus/bin/index.js"
+  },
+  "scaffold": "lotus-scaffold-micro-frontend-portal"
 }
