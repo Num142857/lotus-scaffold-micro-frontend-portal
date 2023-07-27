@@ -9,7 +9,7 @@ const globalEventDistributor = new GlobalEventDistributor();
 export function hashPrefix(app) {
     return function (location) {
         let isShow = false
-        //如果该应用 有多个需要匹配的路劲
+        //如果该应用 有多个需要匹配的路径
         if(isArray(app.path)){
             app.path.forEach(path => {
                 if(location.hash.startsWith(`#${path}`)){
